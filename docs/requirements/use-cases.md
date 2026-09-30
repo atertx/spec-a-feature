@@ -1571,9 +1571,9 @@ Details:
 - **5a. The instructor cancels:**
   - 5a1. The system sends no reminders.
   - 5a2. Use case ends.
-- **6a. The mail server rejects a student's address:**
+- **6a. A reminder fails to send, whether the mail server rejects the address or is temporarily unavailable:**
   - 6a1. The system continues sending the other reminders.
-  - 6a2. The system informs the instructor which addresses were rejected. A rejected reminder does not count toward the daily limit (BR-reminder-daily-limit).
+  - 6a2. The system informs the instructor which reminders failed. A failed reminder does not count toward the daily limit (BR-reminder-daily-limit).
 - **6b. A selected student has submitted every item since the list was displayed:**
   - 6b1. The system sends her no reminder and tells the instructor she has already submitted.
 
