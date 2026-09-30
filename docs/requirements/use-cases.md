@@ -1562,8 +1562,8 @@ Details:
 - **2d. Every student has submitted every item:**
   - 2d1. The system informs the instructor that no reminders are needed.
   - 2d2. Use case ends.
-- **4a. The submission window for an item has closed:**
-  - 4a1. The system does not send reminders for that item and informs the instructor that its deadline has passed (BR-evaluation-submission-window). Reminders for items whose window is still open are sent.
+- **4a. The peer evaluation submission window has closed:**
+  - 4a1. The system does not send peer evaluation reminders and informs the instructor that the deadline has passed (BR-evaluation-submission-window). Weekly activity report reminders are still sent, because a weekly activity report has no submission deadline.
 - **4b. A student has already received the daily limit of reminders for an item:**
   - 4b1. The system does not send that reminder and informs the instructor which student and item reached the limit (BR-reminder-daily-limit). The other reminders are sent.
 - **5a. The instructor cancels:**
@@ -1581,9 +1581,8 @@ Details:
 
 Details:
 - The weekly activity report and the peer evaluation are checked separately. A student can be a non-submitter for one item and not the other.
-- For each item, a student has submitted only if a submission currently exists for the week whose submission window is open for that item. A submission that was deleted does not count.
-- A weekly activity report counts as submitted if at least one activity currently exists for that student for that week (UC-WAR-manage-activities). If she deletes every activity for the week, the report counts as not submitted.git add docs/requirements/use-cases.md
-- A peer evaluation counts as submitted if the student's peer evaluation of the previous week currently exists (BR-evaluation-submission-window). The system does not accept a peer evaluation until every team member is evaluated (UC-EVA-submit-evaluation), so an existing one is complete.
+- A weekly activity report counts as submitted if at least one activity currently exists for that student for the current week (UC-WAR-manage-activities). If she deletes every activity for the week, the report counts as not submitted.git add docs/requirements/use-cases.md
+- A peer evaluation counts as submitted if the student's peer evaluation of the previous week currently exists (BR-evaluation-submission-window). The system does not accept a peer evaluation until every team member is evaluated (UC-EVA-submit-evaluation), so an existing one is complete.git add docs/requirements/use-cases.md
 - A student not assigned to a team is not a non-submitter. She is listed separately (see extension 2b).
 
 Example:
