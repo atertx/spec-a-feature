@@ -1546,7 +1546,7 @@ Details:
 3. The instructor selects the students she wants to remind and indicates to send reminders.
 4. The system displays the reminders to be sent, each naming only the items that student has not submitted, and asks the instructor to confirm.
 5. The instructor confirms.
-6. The system sends each selected student a reminder through the email service.
+6. The system checks each selected student's submission status again and sends her a reminder through the email service, naming only the items she still has not submitted.
 7. The system informs the instructor how many reminders were sent.
 8. Use case ends.
 
@@ -1574,6 +1574,8 @@ Details:
 - **6a. The mail server rejects a student's address:**
   - 6a1. The system continues sending the other reminders.
   - 6a2. The system informs the instructor which addresses were rejected. A rejected reminder does not count toward the daily limit (BR-reminder-daily-limit).
+- **6b. A selected student has submitted every item since the list was displayed:**
+  - 6b1. The system sends her no reminder and tells the instructor she has already submitted.
 
 **Priority:** Medium
 **Frequency of Use:** Approximately 1-3 instructors per course section, a few times per week.
