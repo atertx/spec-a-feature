@@ -1551,9 +1551,9 @@ Details:
 8. Use case ends.
 
 **Extensions:**
-- **2a. The current week is not one of the course section's active weeks:**
-  - 2a1. The system informs the instructor that nothing is due this week and does not list any student as a non-submitter (BR-active-weeks).
-  - 2a2. Use case ends.
+- **2a. The week being evaluated (the previous week) is not one of the course section's active weeks:**
+  - 2a1. The system shows no peer evaluation status and sends no peer evaluation reminders (BR-active-weeks).
+  - 2a2. Weekly activity report status and reminders are unaffected, because a weekly activity report may be submitted in any week (BR-active-weeks).
 - **2b. A student is not assigned to a team, including a student who was removed from her team:**
   - 2b1. The system lists her separately, marked as not assigned to a team, rather than as a non-submitter (BR-team-assignment-required).
   - 2b2. If the instructor selects her in step 3, the system sends her a message explaining that she cannot submit until the course admin assigns her to a team (UC-TEA-assign-students), instead of a submission reminder.
