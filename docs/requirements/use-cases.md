@@ -1562,6 +1562,8 @@ Details:
 - **2d. Every student has submitted every item:**
   - 2d1. The system informs the instructor that no reminders are needed.
   - 2d2. Use case ends.
+- **2e. A student in the course section is deactivated:**
+  - 2e1. The system leaves her off the list and sends her no reminders, because a deactivated student cannot access the system to submit (BR-student-lifecycle).
 - **4a. The peer evaluation submission window has closed:**
   - 4a1. The system does not send peer evaluation reminders and informs the instructor that the deadline has passed (BR-evaluation-submission-window). Weekly activity report reminders are still sent, because a weekly activity report has no submission deadline.
 - **4b. A student has already received the daily limit of reminders for an item:**
@@ -1575,7 +1577,7 @@ Details:
 
 **Priority:** Medium
 **Frequency of Use:** Approximately 1-3 instructors per course section, a few times per week.
-**Business Rules:** BR-section-scoped-access (the instructor sees only the students of a course section she is assigned to), BR-role-based-access, BR-team-assignment-required (a student on no team cannot submit, so she is listed separately), BR-active-weeks, BR-evaluation-submission-window, BR-reminder-daily-limit, CO-ferpa (submission status is a student record)
+**Business Rules:** BR-section-scoped-access (the instructor sees only the students of a course section she is assigned to), BR-role-based-access, BR-team-assignment-required (a student on no team cannot submit, so she is listed separately), BR-active-weeks, BR-evaluation-submission-window, BR-reminder-daily-limit, BR-student-lifecycle (a deactivated student has no access, so she is not listed), CO-ferpa (submission status is a student record)
 
 **Associated Information:**
 
