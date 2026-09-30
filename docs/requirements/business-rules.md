@@ -9,7 +9,7 @@
 | Date          | Version | Description | Author   |
 | ------------- | ------- | ----------- | -------- |
 | \<dd/mmm/yy\> | \<x.x\> | \<details\> | \<name\> |
-|               |         |             |          |
+| 29/09/2026    | 0.1     | Added BR-reminder-daily-limit | Abbie Terhoeve |
 |               |         |             |          |
 |               |         |             |          |
 
@@ -46,6 +46,7 @@ These business rules apply across Project Pulse. The course-administration rules
 - **BR-evaluation-submission-window:** A student may submit a peer evaluation only for the previous week, and has that one week to complete it; both the initial submission and any later edits must occur within this window. A student who fails to complete a peer evaluation in that window cannot make it up, and an evaluation can no longer be changed once its window has closed.
 - **BR-evaluation-private-comment:** When submitting a peer evaluation, the evaluator may optionally include a private comment about the teammate being evaluated. A private comment is visible only to the instructor assigned to the course section (and course admin, per BR-role-based-access); it is never shown to the evaluatee or any other student on the team. Private comments exist to give students a safe channel to raise concerns early.
 - **BR-evaluation-visibility:** For a peer evaluation, a student may see only her own rubric criterion scores, public comments (not private comments — see BR-evaluation-private-comment), and overall grade.
+- **BR-reminder-daily-limit:** An instructor or course admin may send a student no more than two reminders per item (weekly activity report or peer evaluation) per day. Scheduled reminders (FR-NOT-weekly-reminder) do not count toward the limit, and neither does a reminder that failed to send, for any reason, since it never reached the student. A reminder that names both items counts once toward each.
 
 # **Access and Ownership**
 

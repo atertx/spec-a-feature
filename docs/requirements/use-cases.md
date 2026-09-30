@@ -1522,6 +1522,88 @@ Details:
 **Assumptions:**
 **Open Issues:**
 
+### **UC-STU-remind-non-submitters: The course admin/instructor views the students who have not submitted and sends them reminders**
+
+**UC ID and Name:** UC-STU-remind-non-submitters: View students who have not submitted and send them reminders
+**Created By:**
+**Date Created:**
+**Primary Actor:** course admin/instructor
+**Secondary Actors:** email service
+**Trigger:** The instructor indicates to view the students in a course section who have not submitted this week's work.
+**Description:** The instructor wants to see which students in her course section have not submitted their weekly activity report or peer evaluation, so that she can remind only those students before the submission window closes.
+
+**Preconditions:**
+- PRE-1. The instructor is logged into the system.
+- PRE-2. The instructor is assigned to the course section, or the course admin owns the course it belongs to (BR-section-scoped-access).
+
+**Postconditions:**
+- POST-1. Each reminder the mail server accepted is recorded, so that it counts toward the daily limit (BR-reminder-daily-limit).
+- POST-2. No student's submission records are changed.
+
+**Main Success Scenario:**
+1. The instructor indicates to view the students in a course section who have not submitted.
+2. The system displays every student in the course section with her submission status for each item, according to the "Details" defined in the Associated Information of this use case.
+3. The instructor selects the students she wants to remind and indicates to send reminders.
+4. The system displays the reminders to be sent, each naming only the items that student has not submitted, and asks the instructor to confirm.
+5. The instructor confirms.
+6. The system checks each selected student's submission status again and sends her a reminder through the email service, naming only the items she still has not submitted.
+7. The system informs the instructor how many reminders were sent.
+8. Use case ends.
+
+**Extensions:**
+- **2a. The week being evaluated (the previous week) is not one of the course section's active weeks:**
+  - 2a1. The system shows no peer evaluation status and sends no peer evaluation reminders (BR-active-weeks).
+  - 2a2. Weekly activity report status and reminders are unaffected, because a weekly activity report may be submitted in any week (BR-active-weeks).
+- **2b. A student is not assigned to a team, including a student who was removed from her team:**
+  - 2b1. The system lists her separately, marked as not assigned to a team, rather than as a non-submitter (BR-team-assignment-required).
+  - 2b2. If the instructor selects her in step 3, the system sends her a message explaining that she cannot submit until the course admin assigns her to a team (UC-TEA-assign-students), instead of a submission reminder.
+- **2c. A student submitted an item and later deleted it:**
+  - 2c1. The system treats that item as not submitted, according to the "Details" defined in the Associated Information of this use case.
+- **2d. Every student has submitted every item:**
+  - 2d1. The system informs the instructor that no reminders are needed.
+  - 2d2. Use case ends.
+- **2e. A student in the course section is deactivated:**
+  - 2e1. The system leaves her off the list and sends her no reminders, because a deactivated student cannot access the system to submit (BR-student-lifecycle).
+- **4a. The peer evaluation submission window has closed:**
+  - 4a1. The system does not send peer evaluation reminders and informs the instructor that the deadline has passed (BR-evaluation-submission-window). Weekly activity report reminders are still sent, because a weekly activity report has no submission deadline.
+- **4b. A student has already received the daily limit of reminders for an item:**
+  - 4b1. The system does not send that reminder and informs the instructor which student and item reached the limit (BR-reminder-daily-limit). The other reminders are sent.
+- **5a. The instructor cancels:**
+  - 5a1. The system sends no reminders.
+  - 5a2. Use case ends.
+- **6a. A reminder fails to send, whether the mail server rejects the address or is temporarily unavailable:**
+  - 6a1. The system continues sending the other reminders.
+  - 6a2. The system informs the instructor which reminders failed. A failed reminder does not count toward the daily limit (BR-reminder-daily-limit).
+- **6b. A selected student has submitted every item since the list was displayed:**
+  - 6b1. The system sends her no reminder and tells the instructor she has already submitted.
+
+**Priority:** Medium
+**Frequency of Use:** Approximately 1-3 instructors per course section, a few times per week.
+**Business Rules:** BR-section-scoped-access (the instructor sees only the students of a course section she is assigned to), BR-role-based-access, BR-team-assignment-required (a student on no team cannot submit, so she is listed separately), BR-active-weeks, BR-evaluation-submission-window, BR-reminder-daily-limit, BR-student-lifecycle (a deactivated student has no access, so she is not listed), CO-ferpa (submission status is a student record)
+
+**Associated Information:**
+
+Details:
+- The weekly activity report and the peer evaluation are checked separately. A student can be a non-submitter for one item and not the other.
+- A weekly activity report counts as submitted if at least one activity currently exists for that student for the current week (UC-WAR-manage-activities). If she deletes every activity for the week, the report counts as not submitted.git add docs/requirements/use-cases.md
+- A peer evaluation counts as submitted if the student's peer evaluation of the previous week currently exists (BR-evaluation-submission-window). The system does not accept a peer evaluation until every team member is evaluated (UC-EVA-submit-evaluation), so an existing one is complete.git add docs/requirements/use-cases.md
+- A student not assigned to a team is not a non-submitter. She is listed separately (see extension 2b).
+
+Example:
+
+| Student | Weekly activity report | Peer evaluation |
+| ---- | ---- | ---- |
+| Maria | Not submitted | Submitted |
+| Jordan | Submitted | Not submitted |
+| Sam | Not assigned to a team | Not assigned to a team |
+
+The instructor may cancel the use case at any time before confirming in step 5.
+
+**Related Use Cases:** A student views her own team's weekly activity report status (separate use case, different actor). The scheduled weekly reminder skips students who have already submitted (a change to FR-NOT-weekly-reminder, no human actor).
+
+**Assumptions:**
+**Open Issues:**
+
 ## **Instructor**
 
 ### **UC-INS-invite-instructors: The course admin invites instructors to register an account**
