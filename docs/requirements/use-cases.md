@@ -1582,7 +1582,8 @@ Details:
 Details:
 - The weekly activity report and the peer evaluation are checked separately. A student can be a non-submitter for one item and not the other.
 - For each item, a student has submitted only if a submission currently exists for the week whose submission window is open for that item. A submission that was deleted does not count.
-- A weekly activity report counts as submitted if at least one activity currently exists for that student for that week (UC-WAR-manage-activities). If she deletes every activity for the week, the report counts as not submitted.
+- A weekly activity report counts as submitted if at least one activity currently exists for that student for that week (UC-WAR-manage-activities). If she deletes every activity for the week, the report counts as not submitted.git add docs/requirements/use-cases.md
+- A peer evaluation counts as submitted if the student's peer evaluation of the previous week currently exists (BR-evaluation-submission-window). The system does not accept a peer evaluation until every team member is evaluated (UC-EVA-submit-evaluation), so an existing one is complete.
 - A student not assigned to a team is not a non-submitter. She is listed separately (see extension 2b).
 
 Example:
